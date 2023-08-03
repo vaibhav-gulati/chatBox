@@ -42,15 +42,12 @@
     props: {
       text: {
         type: String,
-        required: true,
       },
       from: {
         type: Object,
-        required: true,
       },
       currentUser: {
         type: Object,
-        required: true,
       },
     },
     computed: {

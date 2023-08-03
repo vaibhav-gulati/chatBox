@@ -27,7 +27,6 @@ export default {
   },
   computed: {
     conversation() {
-      console.log("messages",this.$store.state.conversation )
       return this.$store.state.conversation;
     },
     currentUser() {

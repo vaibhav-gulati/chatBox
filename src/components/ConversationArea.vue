@@ -20,11 +20,9 @@
     props: {
       messages: {
         type: Array,
-        required: true,
       },
       currentUser: {
         type: Object,
-        required: true,
       },
     },
     mounted() {
