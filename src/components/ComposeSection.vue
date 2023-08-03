@@ -1,13 +1,13 @@
 <template>
-    <div class="compose-section">
+    <div class="compose-section" :style="{ height: composeHeight }">
       <div class="textarea-container">
         <textarea
           v-model="messageText"
-          @keydown.enter="submitMessage"
+          @input="adjustTextareaHeight"
           :rows="calculateTextareaRows"
+          ref="textarea"
           placeholder="Type your reply..."
         ></textarea>
-      
       </div>
       <button @click="submitMessage">
         <div class="cursor-icon">
@@ -43,7 +43,18 @@
         if (this.messageText.trim() !== "") {
           this.$emit("submit", this.messageText);
           this.messageText = "";
+          this.composeHeight = "auto"; 
         }
+      },
+      adjustTextareaHeight() {
+        this.$nextTick(() => {
+          const textarea = this.$refs.textarea;
+          textarea.style.height = "auto"; 
+          const scrollHeight = textarea.scrollHeight;
+          const maxScrollHeight = 3 * parseInt(getComputedStyle(textarea).lineHeight, 10);
+          textarea.style.height = `${Math.min(scrollHeight, maxScrollHeight)}px`;
+          this.composeHeight = `${this.$refs.container.clientHeight}px`; 
+        });
       },
     },
     computed: {
@@ -58,18 +69,21 @@
     data() {
       return {
         messageText: this.value,
+        composeHeight: "auto", 
       };
     },
   };
   </script>
   
   <style>
+  
   .compose-section {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 8px;
+    transition: height 0.3s; 
   }
   
   .textarea-container {

@@ -45,17 +45,19 @@ export default {
 
 <style>
 .app-container {
+  margin-top: 15%;
+  margin-left: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 400px; 
+  max-width: 500px; 
   background-color: #f0f0f0;
 }
 
 .app {
-  width: 500px;
-  max-width: 100%;
-  height: 100%;
+  width: 100%; 
+  height: 100%; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 8px;
@@ -147,5 +149,10 @@ export default {
   width: 100%;
   height: 100%;
   fill: currentColor;
+}
+@media (max-width: 600px) {
+  .app-container {
+    margin-top: 5%;
+  }
 }
 </style>

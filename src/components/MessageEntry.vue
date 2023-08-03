@@ -3,7 +3,7 @@
       <div
         v-if="isSent"
         class="current-user-thumbnail sent-thumbnail"
-        :title="currentUser.firstName"
+    
       >
  
         <div class="message-bubble current-user-message-bubble">
@@ -20,7 +20,7 @@
         </svg>
       </div>
   
-      <div v-else class="sender-thumbnail received-thumbnail" :title="from.fistName">
+      <div v-else class="sender-thumbnail received-thumbnail" >
         <svg
           class="user-svg"
           xmlns="http://www.w3.org/2000/svg"
